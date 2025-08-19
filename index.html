@@ -1,15 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chop-shock Restaurant</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Chop-shock | Recipes & Community</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#F3F3F3',
+            secondary: '#312F2F',
+            accent: '#FE5E54',
+            bisque: '#FFE1C5'
+          },
+          fontFamily: {
+            display: ['Poppins', 'ui-sans-serif', 'system-ui'],
+            body: ['Inter', 'ui-sans-serif', 'system-ui']
+          },
+          boxShadow: {
+            soft: '0 10px 30px rgba(0,0,0,0.08)'
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
 </head>
-<body>
-    <h1>restaurants</h1>
-    <div id="restaurant-list">
-
+<body class="bg-primary text-secondary font-body">
+  <!-- Header / Nav -->
+  <header class="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-black/5">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="flex items-center justify-between h-16">
+        <a href="#" class="flex items-center gap-2">
+          <span class="inline-block w-8 h-8 rounded-lg bg-accent"></span>
+          <span class="font-display text-xl font-bold">Chop-shock</span>
+        </a>
+        <nav class="hidden md:flex items-center gap-8">
+          <a href="#home" class="hover:text-accent">Home</a>
+          <a href="#recipes" class="hover:text-accent">Recipe</a>
+          <a href="#community" class="hover:text-accent">Community</a>
+          <a href="#about" class="hover:text-accent">About Us</a>
+        </nav>
+        <div class="hidden md:flex items-center gap-3">
+          <a href="#" class="px-3 py-1.5 rounded-lg border border-secondary/20 hover:border-accent transition">Sign In</a>
+          <a href="#" class="px-4 py-2 rounded-xl bg-accent text-white font-medium shadow-soft hover:opacity-90 transition">Explore Recipes</a>
+        </div>
+        <button id="menuBtn" class="md:hidden inline-flex items-center justify-center w-10 h-10 rounded-lg border border-secondary/20">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+      </div>
     </div>
-    <script src="assets/js/app.js"></script>
 </body>
 </html>
