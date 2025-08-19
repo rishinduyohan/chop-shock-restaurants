@@ -15,14 +15,13 @@
                         secondary: '#312F2F',
                         accent: '#FE5E54',
                         bisque: '#FFE1C5',
-                        green: '#046E1B'
+                        green: '#046E1B',
+                        gray:'#D9D9D9',
+                        orange:'#F79F1A'
                     },
                     fontFamily: {
                         display: ['Poppins', 'ui-sans-serif', 'system-ui'],
                         body: ['Inter', 'ui-sans-serif', 'system-ui']
-                    },
-                    boxShadow: {
-                        soft: '0 10px 30px rgba(0,0,0,0.08)'
                     }
                 }
             }
@@ -34,23 +33,23 @@
 </head>
 
 <body class="bg-primary text-secondary font-body">
-    <header class="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-black/5">
+    <header class="sticky top-0 z-50 bg-gray/90 backdrop-blur border-b border-black/5 ">
         <div class="max-w-7xl mx-auto px-4">
             <div class="flex items-center justify-between h-16">
                 <a href="#" class="flex items-center gap-2">
-                    <span class="font-display text-xl font-bold">Chop-shock</span>
+                    <span class="font-display text-xl font-bold text-green">Chop-Shock</span>
                 </a>
                 <nav class="hidden md:flex items-center gap-8">
-                    <a href="#home" class="hover:text-accent">Home</a>
-                    <a href="#recipes" class="hover:text-accent">Recipe</a>
-                    <a href="#community" class="hover:text-accent">Community</a>
-                    <a href="#about" class="hover:text-accent">About Us</a>
+                    <a href="#home" class="hover:text-orange">Home</a>
+                    <a href="#recipes" class="hover:text-orange">Recipe</a>
+                    <a href="#community" class="hover:text-orange">Community</a>
+                    <a href="#about" class="hover:text-orange">About Us</a>
                 </nav>
                 <div class="hidden md:flex items-center gap-3">
                     <a href="#"
-                        class="px-3 py-1.5 rounded-lg border border-secondary/20 hover:border-accent transition">Sign
+                        class="px-3 py-1.5 rounded-lg border border-green/20 hover:border-green transition">Sign
                         In</a>
-
+                    <a href="#" class="flex-1 text-center px-3 py-2 rounded-lg bg-green text-white">Explore Recipes</a>
                 </div>
                 <button id="menuBtn"
                     class="md:hidden inline-flex items-center justify-center w-10 h-10 rounded-lg border border-secondary/20">
@@ -62,15 +61,15 @@
                 </button>
             </div>
         </div>
-        <div id="mobileMenu" class="md:hidden hidden border-t border-black/5 bg-white">
+        <div id="mobileMenu" class="md:hidden hidden border-t border-black/5 bg-gray text-center">
             <div class="px-4 py-3 space-y-2">
                 <a href="#home" class="block py-2">Home</a>
                 <a href="#recipes" class="block py-2">Recipe</a>
                 <a href="#community" class="block py-2">Community</a>
                 <a href="#about" class="block py-2">About Us</a>
                 <div class="pt-2 border-t border-black/5 flex gap-2">
-                    <a href="#" class="flex-1 text-center px-3 py-2 rounded-lg border border-secondary/20">Sign In</a>
-                    <a href="#" class="flex-1 text-center px-3 py-2 rounded-lg bg-accent text-white">Explore</a>
+                    <a href="#" class="flex-1 text-center px-3 py-2 rounded-lg border border-green/20">Sign In</a>
+                    <a href="#" class="flex-1 text-center px-3 py-2 rounded-lg bg-green text-white">Explore Recipes</a>
                 </div>
             </div>
         </div>
