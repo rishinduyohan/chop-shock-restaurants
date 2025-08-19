@@ -1,15 +1,334 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chop-shock Restaurant</title>
-</head>
-<body>
-    <h1>restaurants</h1>
-    <div id="restaurant-list">
 
-    </div>
-    <script src="assets/js/app.js"></script>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Chop-shock Recipes</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="assets/js/theme.js"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body class="bg-primary text-secondary font-body">
+    <header class="sticky top-0 z-50 bg-gray/90 backdrop-blur border-b border-black/5 ">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex items-center justify-between h-16">
+                <a href="#" class="flex items-center gap-2">
+                    <span class="font-display text-xl font-bold text-green">Chop-Shock</span>
+                </a>
+                <nav class="hidden md:flex items-center gap-8">
+                    <a href="#home" class="hover:text-orange">Home</a>
+                    <a href="#recipes" class="hover:text-orange">Recipe</a>
+                    <a href="#community" class="hover:text-orange">Community</a>
+                    <a href="#about" class="hover:text-orange">About Us</a>
+                </nav>
+                <div class="hidden md:flex items-center gap-3">
+                    <a href="#" class="px-3 py-1.5 rounded-lg border border-green/20 hover:border-green transition">Sign
+                        In</a>
+                    <a href="#" class="flex-1 text-center px-3 py-2 rounded-lg bg-green text-white">Explore Recipes</a>
+                </div>
+                <button id="menuBtn"
+                    class="md:hidden inline-flex items-center justify-center w-10 h-10 rounded-lg border border-secondary/20">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                            d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <div id="mobileMenu" class="sticky md:hidden hidden border-t border-black/5 bg-gray text-center">
+            <div class="px-4 py-3 space-y-2">
+                <a href="#home" class="block py-2">Home</a>
+                <a href="#recipes" class="block py-2">Recipe</a>
+                <a href="#community" class="block py-2">Community</a>
+                <a href="#about" class="block py-2">About Us</a>
+                <div class="pt-2 border-t border-black/5 flex gap-2">
+                    <a href="#" class="flex-1 text-center px-3 py-2 rounded-lg border border-green/20">Sign In</a>
+                    <a href="#" class="flex-1 text-center px-3 py-2 rounded-lg bg-green text-white">Explore Recipes</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section id="home" class="relative">
+        <div class="max-w-6xl mx-auto px-4 py-16 lg:py-23 grid lg:grid-cols-2 gap-10 items-center">
+            <div>
+                <h1 class="font-display text-3xl sm:text-5xl lg:text-5xl font-extrabold leading-tight">
+                    Cooking Made Fun<br> and Easy: Unleash <br> Your Inner Chef
+                </h1>
+                <p class="mt-5 text-lg text-secondary/80 max-w-2xl">Discover more than <span
+                        class="font-semibold text-orange">10,000 recipes</span> in your hand with the best recipe. We
+                    help you find
+                    the easiest way to cook.</p>
+                <div class="mt-8 flex flex-wrap gap-3">
+                    <a href="#recipes"
+                        class="px-5 py-3 rounded-2xl bg-orange text-white font-medium shadow-soft">Explore Recipes</a>
+                </div>
+            </div>
+            <div class="relative">
+                <div class=" rounded-3xl shadow-soft overflow-hidden">
+                    <img src="assets/images/0bbfd9ee-bc9e-4508-97cd-c97d1edeb5a2-removebg-preview.png" alt="Hero food"
+                        class="w-full h-full object-cover" />
+                </div>
+                <div class="absolute -bottom-6 -left-6 bg-white/50 rounded-2xl shadow-soft p-4 border border-black/5">
+                    <p class="text-sm font-medium">"Absolutely loved the recipes! Easy to follow and delicious results."
+                    </p>
+                    <p class="text-xs text-secondary/70">- Namal Fernando</p>
+                </div>
+            </div>
+        </div>
+        <!-- Discover Section -->
+        <section id="recipes" class="py-6">
+            <div class="max-w-7xl mx-auto px-4">
+                <div class="flex items-end justify-between gap-4 flex-wrap">
+                    <div>
+                        <h2 class="font-display text-2xl sm:text-3xl font-bold">Discover, Create, Share</h2>
+                        <p class="text-secondary/70">Check our most popular recipes of this week</p>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <input type="text" name="search" id="search" placeholder="Search recipes..."
+                            class="border border-orange/50 rounded-xl py-2 px-4">
+                        <a href="#" class="py-2 px-4 rounded-xl border border-orange/20 bg-orange text-white">Search</a>
+                    </div>
+                </div>
+                <div class="mt-8">
+                    <section class="max-w-7xl mx-auto px-6 mb-6 grid md:grid-cols-2 gap-5">
+                        <select id="categorySelect" class="border border-orange/50 rounded-xl py-2 px-4 w-full">
+                            <option value="">Select Category</option>
+                        </select>
+                        <select id="areaSelect" class="border border-orange/50 rounded-xl py-2 px-4 w-full">
+                            <option value="">Select Area</option>
+                        </select>
+                    </section>
+                </div>
+                <div class="mt-6 grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-6">
+                    <!-- Card template -->
+                    <article class="group bg-white rounded-2xl overflow-hidden shadow-soft border border-black/5">
+                        <img src="https://images.unsplash.com/photo-1484723091739-30a097e8f929?q=80&w=1200&auto=format&fit=crop"
+                            class="h-44 w-full object-cover group-hover:scale-105 transition" alt="Creamy Salad" />
+                        <div class="p-4">
+                            <h3 class="font-semibold">Creamy Salad</h3>
+                            <div class="mt-2 flex items-center justify-between text-sm text-secondary/70">
+                                <span>20 mins • Easy</span>
+                                <a href="#" class="text-accent font-medium">View Recipe</a>
+                            </div>
+                        </div>
+                    </article>
+
+
+                    <article class="group bg-white rounded-2xl overflow-hidden shadow-soft border border-black/5">
+                        <img src="https://images.unsplash.com/photo-1512058564366-18510be2db19?q=80&w=1200&auto=format&fit=crop"
+                            class="h-44 w-full object-cover group-hover:scale-105 transition" alt="Tofu Tomato Soup" />
+                        <div class="p-4">
+                            <h3 class="font-semibold">Tofu Tomatoes Soup</h3>
+                            <div class="mt-2 flex items-center justify-between text-sm text-secondary/70">
+                                <span>35 mins • Medium</span>
+                                <a href="#" class="text-accent font-medium">View Recipe</a>
+                            </div>
+                        </div>
+                    </article>
+
+
+                    <article class="group bg-white rounded-2xl overflow-hidden shadow-soft border border-black/5">
+                        <img src="https://images.unsplash.com/photo-1553621042-f6e147245754?q=80&w=1200&auto=format&fit=crop"
+                            class="h-44 w-full object-cover group-hover:scale-105 transition" alt="Crunchy Potatoes" />
+                        <div class="p-4">
+                            <h3 class="font-semibold">Crunchy Potatoes</h3>
+                            <div class="mt-2 flex items-center justify-between text-sm text-secondary/70">
+                                <span>50 mins • Medium</span>
+                                <a href="#" class="text-accent font-medium">View Recipe</a>
+                            </div>
+                        </div>
+                    </article>
+
+
+                    <article class="group bg-white rounded-2xl overflow-hidden shadow-soft border border-black/5">
+                        <img src="https://images.unsplash.com/photo-1475090169767-40ed8d18f67d?q=80&w=1200&auto=format&fit=crop"
+                            class="h-44 w-full object-cover group-hover:scale-105 transition" alt="Mushroom Soup" />
+                        <div class="p-4">
+                            <h3 class="font-semibold">Mushroom Soup</h3>
+                            <div class="mt-2 flex items-center justify-between text-sm text-secondary/70">
+                                <span>25 mins • Easy</span>
+                                <a href="#" class="text-accent font-medium">View Recipe</a>
+                            </div>
+                        </div>
+                    </article>
+
+
+                    <article class="group bg-white rounded-2xl overflow-hidden shadow-soft border border-black/5">
+                        <img src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?q=80&w=1200&auto=format&fit=crop"
+                            class="h-44 w-full object-cover group-hover:scale-105 transition" alt="Raspberry Pancake" />
+                        <div class="p-4">
+                            <h3 class="font-semibold">Raspberry Pancake</h3>
+                            <div class="mt-2 flex items-center justify-between text-sm text-secondary/70">
+                                <span>30 mins • Easy</span>
+                                <a href="#" class="text-accent font-medium">View Recipe</a>
+                            </div>
+                        </div>
+                    </article>
+
+
+                    <article class="group bg-white rounded-2xl overflow-hidden shadow-soft border border-black/5">
+                        <img src="https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=1200&auto=format&fit=crop"
+                            class="h-44 w-full object-cover group-hover:scale-105 transition" alt="Beef Teriyaki" />
+                        <div class="p-4">
+                            <h3 class="font-semibold">Beef Teriyaki</h3>
+                            <div class="mt-2 flex items-center justify-between text-sm text-secondary/70">
+                                <span>45 mins • Medium</span>
+                                <a href="#" class="text-accent font-medium">View Recipe</a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+        <!-- About Us-->
+        <section id="about" class="py-16 mt-8 "
+            style="background-image: url('assets/images/steptodown.com545537.jpg'); background-size: cover; background-position: center; background-attachment: fixed;">
+            <div class="max-w-2xl mx-auto px-4 items-center">
+                <div class="bg-white/90 backdrop-blur rounded-3xl shadow-soft p-8 md:p-12 ">
+                    <h2 class="font-display text-2xl sm:text-3xl font-bold">About Us</h2>
+                    <p class="mt-3 text-secondary/80">Our recipes are the heart and soul of our culinary community,
+                        reflecting our commitment to providing you with memorable and delightful dining experiences.</p>
+                    <a href="#"
+                        class="inline-block mt-6 px-5 py-3 rounded-2xl bg-orange text-white hover:opacity-90">Learn
+                        More</a>
+                </div>
+            </div>
+        </section>
+        <section id="community" class="py-16 bg-white">
+            <div class="max-w-7xl mx-auto px-4">
+                <div class="gap-6 items-start">
+                    <div class="text-center mt-5 mb-8">
+                        <h2 class="font-display text-2xl sm:text-3xl font-bold">From Our Community</h2>
+                        <p class="text-secondary/70 mt-2">Real stories from home cooks like you.</p>
+                    </div>
+                    <div class="grid sm:grid-cols-2 gap-6">
+                        <!-- Testimonial cards -->
+                        <article class="rounded-2xl border border-black/5 shadow-soft p-5">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-full bg-bisque"></div>
+                                <div>
+                                    <h3 class="font-semibold">Spaghetti Bolognese</h3>
+                                    <p class="text-sm text-secondary/70">by Lady Rudy</p>
+                                </div>
+                            </div>
+                            <p class="mt-3 text-sm text-secondary/80">“ I have to say, your Spaghetti Bolognese recipe
+                                is nothing short of
+                                amazing! I've always been a fan of Italian cuisine, but I was a bit
+                                intimidated by the idea of making this classic at home”</p>
+                            <img src="https://images.unsplash.com/photo-1553621042-f6e147245754?q=80&w=1200&auto=format&fit=crop"
+                                class="h-44 w-full object-cover group-hover:scale-105 transition"
+                                alt="Crunchy Potatoes" />
+                            <div class="mt-4 text-xs text-secondary/60">2 Shares</div>
+                        </article>
+
+
+                        <article class="rounded-2xl border border-black/5 shadow-soft p-5">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-full bg-bisque"></div>
+                                <div>
+                                    <h3 class="font-semibold">Roasted Chicken</h3>
+                                    <p class="text-sm text-secondary/70">by Emily Rose</p>
+                                </div>
+                            </div>
+                            <p class="mt-3 text-sm text-secondary/80">“ I've always been a bit hesitant to roast a whole
+                                chicken, fearing it
+                                might be too complicated, but your recipe changed that for me. The
+                                instructions were so clear and easy to follow.”</p>
+                            <img src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?q=80&w=1200&auto=format&fit=crop"
+                                class="h-44 w-full object-cover group-hover:scale-105 transition"
+                                alt="Raspberry Pancake" />
+                            <div class="mt-4 text-xs text-secondary/60">5 Shares</div>
+                        </article>
+
+
+                        <article class="rounded-2xl border border-black/5 shadow-soft p-5">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-full bg-bisque"></div>
+                                <div>
+                                    <h3 class="font-semibold">Vegetable Pot Pie</h3>
+                                    <p class="text-sm text-secondary/70">by Susan H</p>
+                                </div>
+                            </div>
+                            <p class="mt-3 text-sm text-secondary/80">“ I've always been a fan of hearty comfort food,
+                                and the 'Ultimate
+                                Vegetable Pot Pie' recipe on this platform completely exceeded my
+                                expectations.”</p>
+                            <img src="https://images.unsplash.com/photo-1475090169767-40ed8d18f67d?q=80&w=1200&auto=format&fit=crop"
+                                class="h-44 w-full object-cover group-hover:scale-105 transition" alt="Mushroom Soup" />
+                            <div class="mt-4 text-xs text-secondary/60">3 Shares</div>
+                        </article>
+
+
+                        <article class="rounded-2xl border border-black/5 shadow-soft p-5">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-full bg-bisque"></div>
+                                <div>
+                                    <h3 class="font-semibold">Fresh Garden Salad</h3>
+                                    <p class="text-sm text-secondary/70">by Lilac Laura</p>
+                                </div>
+                            </div>
+                            <p class="mt-3 text-sm text-secondary/80">“I've always considered myself a salad enthusiast,
+                                and this salad
+                                recipe is nothing short of a culinary masterpiece and has taken my
+                                love for greens to a whole new level.”</p>
+                            <img src="https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=1200&auto=format&fit=crop"
+                                class="h-44 w-full object-cover group-hover:scale-105 transition" alt="Beef Teriyaki" />
+                            <div class="mt-4 text-xs text-secondary/60">1 Share</div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--Footer section-->
+        <footer class="border-t border-black/5 bg-white">
+            <div class="max-w-7xl mx-auto px-4 py-10 grid md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center gap-2">
+                        <span class="font-display text-xl font-bold text-green">Chop-shock</span>
+                    </div>
+                    <p class="mt-3 text-sm text-secondary/70 max-w-xs">Cooking made fun and easy. Discover, create, and
+                        share delightful recipes with a vibrant community.</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold">Menu</h4>
+                    <ul class="mt-3 space-y-2 text-sm">
+                        <li><a href="#home" class="hover:text-accent">Home</a></li>
+                        <li><a href="#recipes" class="hover:text-accent">Recipe</a></li>
+                        <li><a href="#community" class="hover:text-accent">Community</a></li>
+                        <li><a href="#about" class="hover:text-accent">About Us</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold">Categories</h4>
+                    <ul class="mt-3 space-y-2 text-sm">
+                        <li>Breakfast</li>
+                        <li>Lunch</li>
+                        <li>Dinner</li>
+                        <li>Dessert</li>
+                        <li>Drink</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold">Social</h4>
+                    <ul class="mt-3 space-y-2 text-sm">
+                        <li><a href="#" class="hover:text-accent">Instagram</a></li>
+                        <li><a href="#" class="hover:text-accent">Twitter</a></li>
+                        <li><a href="#" class="hover:text-accent">YouTube</a></li>
+                        <li><a href="#" class="hover:text-accent">Facebook</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="px-4 py-6 border-t border-black/5 text-center text-sm text-secondary/60">© <span
+                    id="year"></span> Chop-shock 2025. All rights reserved.</div>
+        </footer>
+        <script src="assets/js/app.js"></script>
 </body>
+
 </html>
