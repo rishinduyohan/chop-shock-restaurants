@@ -11,6 +11,13 @@ searchItem.addEventListener("keypress", e=>{
 search =(item)=>{
     fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${item}`)
     .then(response => response.json())
-    .then(data => console.log(data))
+    .then(data =>{
+        console.log(data);
+        setItem(data);
+    })
     .catch(error => console.error("Error : ",error));
+}
+
+setItem = (data) =>{
+    
 }
