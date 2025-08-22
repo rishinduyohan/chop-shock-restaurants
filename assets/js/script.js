@@ -117,6 +117,7 @@ showMealDetails=(id)=>{
     window.location.href = "recipeItem.html";
 }
 
+//Add comments
 const comments = [
     {id:1,pImg:"assets/images/p2.jpeg",title:"Spaghetti Bolognese",shares:"2 Shares",commenter:"Rishindu Yohan",comment:"“ I have to say, your Spaghetti Bolognese recipe is nothing short of amazing! I've always been a fan of Italian cuisine, but I was a bit intimidated by the idea of making this classic at home”"},
     {id:2,pImg:"assets/images/p3.jpeg",title:"Chicken Alfredo",shares:"5 Shares",commenter:"Jane Doe",comment:"“ I recently tried your Chicken Alfredo recipe, and I have to say, it was absolutely delicious! The creamy sauce paired perfectly with the tender chicken and fettuccine pasta. It was a hit with my family, and I'll definitely be making it again soon.”"},
