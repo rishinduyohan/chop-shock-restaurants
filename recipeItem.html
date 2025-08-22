@@ -13,10 +13,10 @@
         rel="stylesheet">
 </head>
 
-<body class="bg-primary text-secondary font-body">
+<body class="bg-primary text-secondary font-body ">
     <!-- Navbar -->
     <header class="sticky top-0 z-50 bg-gray/90 backdrop-blur border-b border-black/5 " id="navbar"></header>
-    
+
     <!-- Recipe Details Section -->
     <section class="max-w-7xl mx-auto" id="recipe-Details"></section>
 
@@ -50,16 +50,20 @@
                                 <img src="${meal.strMealThumb}" alt="${meal.strMeal}"
                                     class="w-full h-auto rounded-lg mb-6">
                             </div>
-                            <div>
+                            <div class="mt-8 md:mt-0">
+                                <article class="rounded-2xl border border-black/5 shadow-soft p-5 text-center">
                                 <h2 class="font-semibold text-xl mb-4">Ingredients</h2>
-                                <ul class="list-disc gap-6 mb-6">
+                                <ul class="gap-6 mb-4">
                                     ${ingredients}
                                 </ul>
+                                </article>
                             </div>
                         </div>
-                        <h2 class="font-semibold text-xl mb-4">Instructions</h2>
-                        <div class="list-decimal list-inside space-y-4 mb-8">
-                            <p>${meal.strInstructions}</p>
+                        <div class="gap-8 p-6 md:p-12">
+                            <h2 class="font-semibold text-xl mb-4">Instructions</h2>
+                            <div class="list-decimal list-inside space-y-4 mb-8">
+                                <p>${meal.strInstructions}</p>
+                            </div>
                         </div>
                     `;
                 });
