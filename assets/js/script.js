@@ -116,3 +116,40 @@ showMealDetails=(id)=>{
     localStorage.setItem("mealId", id);
     window.location.href = "recipeItem.html";
 }
+
+const comments = [
+    {id:1,pImg:"assets/images/p2.jpeg",title:"Spaghetti Bolognese",shares:"2 Shares",commenter:"Rishindu Yohan",comment:"“ I have to say, your Spaghetti Bolognese recipe is nothing short of amazing! I've always been a fan of Italian cuisine, but I was a bit intimidated by the idea of making this classic at home”"},
+    {id:2,pImg:"assets/images/p3.jpeg",title:"Chicken Alfredo",shares:"5 Shares",commenter:"Jane Doe",comment:"“ I recently tried your Chicken Alfredo recipe, and I have to say, it was absolutely delicious! The creamy sauce paired perfectly with the tender chicken and fettuccine pasta. It was a hit with my family, and I'll definitely be making it again soon.”"},
+    {id:3,pImg:"assets/images/p4.jpeg",title:"Vegetable Stir Fry",shares:"3 Shares",commenter:"Susan H",comment:"“ Your Vegetable Stir Fry recipe is a game changer! It's so quick and easy to make, and the flavors are incredible. I love how versatile it is – I can use whatever veggies I have on hand.”"},
+    {id:4,pImg:"assets/images/p5.jpeg",title:"Beef Tacos",shares:"4 Shares",commenter:"Mike Johnson",comment:"“ I made your Beef Tacos for dinner last night, and they were a huge hit! The seasoning was perfect, and I loved the fresh toppings. I'll definitely be adding this recipe to my regular rotation.”"}
+]
+const commentContainer = document.getElementById("commentContainer");
+
+for(let i=0;i<6;i++){
+    fetch("https://www.themealdb.com/api/json/v1/1/random.php")
+    .then(res => res.json())
+    .then(data => {
+        let recipe = data.meals[0];
+        let comment = comments[i];
+        let article = document.createElement("article");
+        article.classList.add("rounded-2xl", "border", "border-black/5", "shadow-soft", "p-5");
+        article.setAttribute("data-aos", "zoom-in");
+        article.innerHTML = `
+            <div class="flex items-center gap-3">
+                <img src="${comment.pImg}" alt="man" class="w-10 h-10 rounded-full">
+            <div>
+                <h3 class="font-semibold">${recipe.strMeal}</h3>
+                <p class="text-sm text-secondary/70">by ${comment.commenter}</p>
+            </div>
+        </div>
+        <p class="mt-3 text-sm text-secondary/80">“ ${comment.comment}”</p>
+        <img src="${recipe.strMealThumb}"
+            class="h-44 w-full object-cover group-hover:scale-105 transition"
+            alt="Crunchy Potatoes" />
+            <div class="mt-4 text-xs text-secondary/60">${comment.shares}</div>
+
+        `;
+
+        commentContainer.appendChild(article);
+    });
+}
