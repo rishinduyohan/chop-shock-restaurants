@@ -69,7 +69,9 @@ searchBtn.addEventListener("click", e=>{
     searchItem.value = "";
    
 });
-
+categorySelect.addEventListener("change", e => {
+    if(categorySelect.value){searchMeals(`https://www.themealdb.com/api/json/v1/1/search.php?s=${categorySelect.value}`)}
+});
 searchMeals =(url)=>{
     fetch(url)
     .then(response => response.json())
