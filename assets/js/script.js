@@ -44,7 +44,7 @@ for(let i=0; i<6; i++){
                 <h3 class="font-semibold">${recipe.strMeal}</h3>
                 <div class="mt-2 flex items-center justify-between text-sm text-secondary/70">
                     <span>${recipe.strArea} • ${recipe.strCategory}</span>
-                    <a href="#" class="text-accent font-medium">View Recipe</a>
+                    <a href="recipeItem.html" class="text-accent font-medium">View Recipe</a>
                 </div>
             </div>
         `;
@@ -96,7 +96,7 @@ searchMeals =(url)=>{
                         <h3 class="font-semibold">${meal.strMeal}</h3>
                         <div class="mt-2 flex items-center justify-between text-sm text-secondary/70">
                             <span>${meal.strArea} • ${meal.strCategory}</span>
-                            <a href="#" class="text-accent font-medium">View Recipe</a>
+                            <a href="recipeItem.html" class="text-accent font-medium">View Recipe</a>
                         </div>
                     </div>
                 `;
