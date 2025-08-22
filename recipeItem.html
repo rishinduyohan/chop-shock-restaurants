@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Chop-shock Recipes</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="assets/js/theme.js"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body class="bg-primary text-secondary font-body ">
+    <!-- Navbar -->
+    <header class="sticky top-0 z-50 bg-gray/90 backdrop-blur border-b border-black/5 " id="navbar"></header>
+
+    <!-- Recipe Details Section -->
+    <section class="max-w-7xl mx-auto" id="recipe-Details"></section>
+
+    <!--Footer section-->
+    <footer class="border-t border-black/5 bg-white" id="footer"></footer>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="assets/js/app.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const recipeDetails = document.getElementById("recipe-Details");
+            let id = localStorage.getItem("mealId");
+            if (id) {
+                console.log(id);
+                fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        let meal = data.meals[0];
+                        let ingredients = "";
+                        for (let i = 1; i <= 20; i++) {
+                            if (meal[`strIngredient${i}`]) {
+                                ingredients += `<li>${meal[`strIngredient${i}`]} - ${meal[`strMeasure${i}`]}</li>`;
+                            }
+                        }
+                        recipeDetails.innerHTML = `
+                        <div class="grid lg:grid-cols-2 md:grid-cols-1 sm:grid-cols-1 gap-8 p-6 md:p-12">
+                            <div class="col-span-1">
+                                <div class="mb-4">
+                                    <p><strong>Area:</strong> ${meal.strArea}</p>
+                                </div>
+                                <h1 class="font-display text-3xl font-bold mb-6">${meal.strMeal}</h1>
+                                <img src="${meal.strMealThumb}" alt="${meal.strMeal}"
+                                    class="w-full h-auto rounded-lg mb-6">
+                            </div>
+                            <div class="mt-8 md:mt-0">
+                                <article class="rounded-2xl border border-black/5 shadow-soft p-5 text-center">
+                                <h2 class="font-semibold text-xl mb-4">Ingredients</h2>
+                                <ul class="gap-6 mb-4">
+                                    ${ingredients}
+                                </ul>
+                                </article>
+                            </div>
+                        </div>
+                        <div class="gap-8 p-6 md:p-12">
+                            <h2 class="font-semibold text-xl mb-4">Instructions</h2>
+                            <div class="list-decimal list-inside space-y-4 mb-8">
+                                <p>${meal.strInstructions}</p>
+                            </div>
+                        </div>
+                    `;
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>
