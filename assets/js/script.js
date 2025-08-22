@@ -25,6 +25,7 @@ setItem = (data) =>{
     
 }
 
+//Add categories 
 fetch("https://www.themealdb.com/api/json/v1/1/list.php?c=list")
 .then(res => res.json())
 .then(data =>{
@@ -33,6 +34,17 @@ fetch("https://www.themealdb.com/api/json/v1/1/list.php?c=list")
         option.value =category.strCategory;
         option.textContent = category.strCategory;
         categorySelect.appendChild(option);
-
     });
+});
+
+//Add areas
+fetch("https://www.themealdb.com/api/json/v1/1/list.php?a=list")
+.then(res => res.json())
+.then(data => {
+   data.meals.forEach(area  => {
+    let option = document.createElement("option");
+    option.value = area.strArea;
+    option.textContent = area.strArea;
+    areaSelect.appendChild(option);
+   });
 });
