@@ -33,12 +33,12 @@ for(let i=0; i<6; i++){
     fetch("https://www.themealdb.com/api/json/v1/1/random.php")
     .then(res => res.json())
     .then(data => {
-        let recipe =data.meals[0];
+        let recipe = data.meals[0];
         let article = document.createElement("article");
-       article.classList.add("group", "bg-white", "rounded-2xl", "overflow-hidden", "shadow-soft", "border", "border-black/5");
+        article.classList.add("group", "bg-white", "rounded-2xl", "overflow-hidden", "shadow-soft", "border", "border-black/5");
         article.setAttribute("data-aos", "zoom-in");
-        article.innerHTML=`
-            <img src="${recipe.strMealThumb}"class="h-44 w-full object-cover group-hover:scale-105 transition" alt="${recipe.strMeal}" />
+        article.innerHTML = `
+            <img src="${recipe.strMealThumb}" class="h-44 w-full object-cover group-hover:scale-105 transition" alt="${recipe.strMeal}" />
             <div class="p-4">
                 <h3 class="font-semibold">${recipe.strMeal}</h3>
                 <div class="mt-2 flex items-center justify-between text-sm text-secondary/70">
