@@ -29,7 +29,7 @@
                 <div class="hidden md:flex items-center gap-3">
                     <a href="#" class="px-3 py-1.5 rounded-lg border border-green/20 hover:border-green transition">Sign
                         In</a>
-                    <a href="#" class="flex-1 text-center px-3 py-2 rounded-lg bg-green text-white">Explore Recipes</a>
+                    <a href="#recipes" class="flex-1 text-center px-3 py-2 rounded-lg bg-green text-white">Explore Recipes</a>
                 </div>
                 <button id="menuBtn"
                     class="md:hidden inline-flex items-center justify-center w-10 h-10 rounded-lg border border-secondary/20">
@@ -49,7 +49,7 @@
                 <a href="#about" class="block py-2">About Us</a>
                 <div class="pt-2 border-t border-black/5 flex gap-2">
                     <a href="#" class="flex-1 text-center px-3 py-2 rounded-lg border border-green/20">Sign In</a>
-                    <a href="#" class="flex-1 text-center px-3 py-2 rounded-lg bg-green text-white">Explore Recipes</a>
+                    <a href="#recipes" class="flex-1 text-center px-3 py-2 rounded-lg bg-green text-white">Explore Recipes</a>
                 </div>
             </div>
         </div>
@@ -92,9 +92,9 @@
                         <p class="text-secondary/70">Check our most popular recipes of this week</p>
                     </div>
                     <div class="flex items-center gap-2">
-                        <input type="text" name="search" id="search" placeholder="Search recipes..."
+                        <input type="text" name="search" id="default-search" placeholder="Search recipes..."
                             class="border border-orange/50 rounded-xl py-2 px-4">
-                        <a href="#" class="py-2 px-4 rounded-xl border border-orange/20 bg-orange text-white">Search</a>
+                        <a href="#" id="btn-search" class="py-2 px-4 rounded-xl border border-orange/20 bg-orange text-white">Search</a>
                     </div>
                 </div>
                 <div class="mt-8">
@@ -372,10 +372,11 @@
                 </div>
             </div>
             <div class="px-4 py-6 border-t border-black/5 text-center text-sm text-secondary/60">© <span
-                    id="year"></span> Chop-shock 2025. All rights reserved.</div>
+                    id="year"></span> Chop-shock 2025. All rights reserved by Rishindu Yohan.</div>
         </footer>
         <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
         <script src="assets/js/app.js"></script>
+        <script src="assets/js/script.js"></script>
 </body>
 
 </html>
