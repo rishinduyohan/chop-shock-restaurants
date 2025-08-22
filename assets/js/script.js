@@ -3,6 +3,7 @@ let categorySelect = document.getElementById("categorySelect");
 let areaSelect = document.getElementById("areaSelect");
 let  searchItem = document.getElementById("default-search");
 let recipeCards = document.getElementById("recipe-cards");
+let searchBtn = document.getElementById("btn-search");
 
 //Add categories 
 fetch("https://www.themealdb.com/api/json/v1/1/list.php?c=list")
@@ -56,20 +57,45 @@ for(let i=0; i<6; i++){
 searchItem.addEventListener("keypress", e=>{
     if(e.key === "Enter"){
         e.preventDefault();
-        let item = searchItem.value;
-        search(item);
+        let item = searchItem.value.trim();
+       searchMeals(`https://www.themealdb.com/api/json/v1/1/search.php?s=${item}`);
+       searchItem.value = "";
     }
 });
-search =(item)=>{
-    fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${item}`)
+searchBtn.addEventListener("click", e=>{
+    e.preventDefault();
+    let item = searchItem.value.trim();
+    searchMeals(`https://www.themealdb.com/api/json/v1/1/search.php?s=${item}`);
+    searchItem.value = "";
+   
+});
+
+searchMeals =(url)=>{
+    fetch(url)
     .then(response => response.json())
     .then(data =>{
         console.log(data);
-        setItem(data);
+        recipeCards.innerHTML = "";
+        if(data.meals){
+            data.meals.forEach(meal => {
+                let article =document.createElement("article");
+                article.classList.add("group", "bg-white", "rounded-2xl", "overflow-hidden", "shadow-soft", "border", "border-black/5");
+                article.setAttribute("data-aos", "zoom-in");
+                article.innerHTML = `
+                    <img src="${meal.strMealThumb}" class="h-44 w-full object-cover group-hover:scale-105 transition" alt="${meal.strMeal}" />
+                    <div class="p-4">
+                        <h3 class="font-semibold">${meal.strMeal}</h3>
+                        <div class="mt-2 flex items-center justify-between text-sm text-secondary/70">
+                            <span>${meal.strArea} • ${meal.strCategory}</span>
+                            <a href="#" class="text-accent font-medium">View Recipe</a>
+                        </div>
+                    </div>
+                `;
+                recipeCards.appendChild(article);
+            });
+        }else{
+            recipeCards.innerHTML = "<h2 class='text-center text-2xl'>No recipes found</h2>";
+        }
     })
     .catch(error => console.error("Error : ",error));
-}
-
-setItem = (data) =>{
-    
 }
