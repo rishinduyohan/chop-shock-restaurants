@@ -19,5 +19,21 @@ search =(item)=>{
 }
 
 setItem = (data) =>{
-    
+    let meals = data.meals;
+    let container = document.getElementById("search-results");
+    container.innerHTML = "";
+    if(meals){
+        meals.forEach(meal => {
+            let div = document.createElement("div");
+            div.classList.add("meal");
+            div.innerHTML = `
+                <h3>${meal.strMeal}</h3>
+                <img src="${meal.strMealThumb}" alt="${meal.strMeal}">
+                <p>${meal.strInstructions}</p>
+            `;
+            container.appendChild(div);
+        });
+    }else{
+        container.innerHTML = "<p>No results found</p>";
+    }
 }
