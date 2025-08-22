@@ -136,7 +136,7 @@ for(let i=0;i<6;i++){
         article.setAttribute("data-aos", "zoom-in");
         article.innerHTML = `
             <div class="flex items-center gap-3">
-                <img src="${comment.pImg}" alt="man" class="w-10 h-10 rounded-full">
+                <img src="${comment.pImg}" alt="man" class="w-auto h-10 rounded-full">
             <div>
                 <h3 class="font-semibold">${recipe.strMeal}</h3>
                 <p class="text-sm text-secondary/70">by ${comment.commenter}</p>
