@@ -48,6 +48,7 @@ for(let i=0; i<6; i++){
                 </div>
             </div>
         `;
+        article.addEventListener("click", () => showMealDetails(recipe.idMeal));
         recipeCards.appendChild(article);
     });
 };
@@ -100,6 +101,7 @@ searchMeals =(url)=>{
                         </div>
                     </div>
                 `;
+                article.addEventListener("click", () => showMealDetails(meal.idMeal));
                 recipeCards.appendChild(article);
             });
         }else{
@@ -107,4 +109,14 @@ searchMeals =(url)=>{
         }
     })
     .catch(error => console.error("Error : ",error));
+}
+
+//show meal details
+showMealDetails=(id)=>{
+    console.log(id);
+    fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`)
+    .then(response => response.json())
+    .then(data => {
+        console.log(data);
+    })
 }
