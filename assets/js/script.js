@@ -120,8 +120,8 @@ showMealDetails=(id)=>{
 const comments = [
     {id:1,pImg:"assets/images/p2.jpeg",title:"Spaghetti Bolognese",shares:"2 Shares",commenter:"Rishindu Yohan",comment:"“ I have to say, your Spaghetti Bolognese recipe is nothing short of amazing! I've always been a fan of Italian cuisine, but I was a bit intimidated by the idea of making this classic at home”"},
     {id:2,pImg:"assets/images/p3.jpeg",title:"Chicken Alfredo",shares:"5 Shares",commenter:"Jane Doe",comment:"“ I recently tried your Chicken Alfredo recipe, and I have to say, it was absolutely delicious! The creamy sauce paired perfectly with the tender chicken and fettuccine pasta. It was a hit with my family, and I'll definitely be making it again soon.”"},
-    {id:3,pImg:"assets/images/p4.jpeg",title:"Vegetable Stir Fry",shares:"3 Shares",commenter:"Susan H",comment:"“ Your Vegetable Stir Fry recipe is a game changer! It's so quick and easy to make, and the flavors are incredible. I love how versatile it is – I can use whatever veggies I have on hand.”"},
-    {id:4,pImg:"assets/images/p5.jpeg",title:"Beef Tacos",shares:"4 Shares",commenter:"Mike Johnson",comment:"“ I made your Beef Tacos for dinner last night, and they were a huge hit! The seasoning was perfect, and I loved the fresh toppings. I'll definitely be adding this recipe to my regular rotation.”"}
+    {id:3,pImg:"assets/images/p4.jpg",title:"Vegetable Stir Fry",shares:"3 Shares",commenter:"Susan H",comment:"“ Your Vegetable Stir Fry recipe is a game changer! It's so quick and easy to make, and the flavors are incredible. I love how versatile it is – I can use whatever veggies I have on hand.”"},
+    {id:4,pImg:"assets/images/p1.jpg",title:"Beef Tacos",shares:"4 Shares",commenter:"Mike Johnson",comment:"“ I made your Beef Tacos for dinner last night, and they were a huge hit! The seasoning was perfect, and I loved the fresh toppings. I'll definitely be adding this recipe to my regular rotation.”"}
 ]
 const commentContainer = document.getElementById("commentContainer");
 
