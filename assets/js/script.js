@@ -1,6 +1,9 @@
 //console.log("Hello");
-
+let categorySelect = document.getElementById("categorySelect");
+let areaSelect = document.getElementById("areaSelect");
 let  searchItem = document.getElementById("default-search");
+
+
 searchItem.addEventListener("keypress", e=>{
     if(e.key === "Enter"){
         e.preventDefault();
@@ -19,21 +22,17 @@ search =(item)=>{
 }
 
 setItem = (data) =>{
-    let meals = data.meals;
-    let container = document.getElementById("search-results");
-    container.innerHTML = "";
-    if(meals){
-        meals.forEach(meal => {
-            let div = document.createElement("div");
-            div.classList.add("meal");
-            div.innerHTML = `
-                <h3>${meal.strMeal}</h3>
-                <img src="${meal.strMealThumb}" alt="${meal.strMeal}">
-                <p>${meal.strInstructions}</p>
-            `;
-            container.appendChild(div);
-        });
-    }else{
-        container.innerHTML = "<p>No results found</p>";
-    }
+    
 }
+
+fetch("https://www.themealdb.com/api/json/v1/1/list.php?c=list")
+.then(res => res.json())
+.then(data =>{
+    data.meals.forEach(category => {
+        let option = document.createElement("option");
+        option.value =category.strCategory;
+        option.textContent = category.strCategory;
+        categorySelect.appendChild(option);
+
+    });
+});
