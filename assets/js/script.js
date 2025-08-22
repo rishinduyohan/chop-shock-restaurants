@@ -2,28 +2,7 @@
 let categorySelect = document.getElementById("categorySelect");
 let areaSelect = document.getElementById("areaSelect");
 let  searchItem = document.getElementById("default-search");
-
-
-searchItem.addEventListener("keypress", e=>{
-    if(e.key === "Enter"){
-        e.preventDefault();
-        let item = searchItem.value;
-        search(item);
-    }
-});
-search =(item)=>{
-    fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${item}`)
-    .then(response => response.json())
-    .then(data =>{
-        console.log(data);
-        setItem(data);
-    })
-    .catch(error => console.error("Error : ",error));
-}
-
-setItem = (data) =>{
-    
-}
+let recipeCards = document.getElementById("recipe-cards");
 
 //Add categories 
 fetch("https://www.themealdb.com/api/json/v1/1/list.php?c=list")
@@ -47,4 +26,50 @@ fetch("https://www.themealdb.com/api/json/v1/1/list.php?a=list")
     option.textContent = area.strArea;
     areaSelect.appendChild(option);
    });
+}); 
+
+//Add random items
+for(let i=0; i<6; i++){ 
+    fetch("https://www.themealdb.com/api/json/v1/1/random.php")
+    .then(res => res.json())
+    .then(data => {
+        let recipe =data.meals[0];
+        let article = document.createElement("article");
+       article.classList.add("group", "bg-white", "rounded-2xl", "overflow-hidden", "shadow-soft", "border", "border-black/5");
+        article.setAttribute("data-aos", "zoom-in");
+        article.innerHTML=`
+            <img src="${recipe.strMealThumb}"class="h-44 w-full object-cover group-hover:scale-105 transition" alt="${recipe.strMeal}" />
+            <div class="p-4">
+                <h3 class="font-semibold">${recipe.strMeal}</h3>
+                <div class="mt-2 flex items-center justify-between text-sm text-secondary/70">
+                    <span>${recipe.strArea} • ${recipe.strCategory}</span>
+                    <a href="#" class="text-accent font-medium">View Recipe</a>
+                </div>
+            </div>
+        `;
+        recipeCards.appendChild(article);
+    });
+};
+
+
+//search items
+searchItem.addEventListener("keypress", e=>{
+    if(e.key === "Enter"){
+        e.preventDefault();
+        let item = searchItem.value;
+        search(item);
+    }
 });
+search =(item)=>{
+    fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${item}`)
+    .then(response => response.json())
+    .then(data =>{
+        console.log(data);
+        setItem(data);
+    })
+    .catch(error => console.error("Error : ",error));
+}
+
+setItem = (data) =>{
+    
+}
